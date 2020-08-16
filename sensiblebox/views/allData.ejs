@@ -1,13 +1,67 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <h1>allData success</h1>
-    
-  </body>
+
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+  <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+
+</head>
+
+<body>
+  <h1><%= title %></h1>
+  <p>Welcome to <%= title %></p>
+  <h1>allData success</h1>
+  <!-- list -->
+  <!-- <% for (var i = 0;i < DB_data.length;i++){ %> -->
+  <!-- <li><%= DB_data[i].id %></li> -->
+  <!-- <% } %> -->
+  <table id="sensible_tb" class="display" style="width:90%">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>duedate</th>
+        <th>title</th>
+        <th>space</th>
+        <th>fund</th>
+        <th>investment</th>
+        <th>price</th>
+        <th>etc</th>
+        <th>link</th>
+        <th>week</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% DB_data.forEach(function (item, index){ %>
+      <tr>
+        <td><%= item.id %></td>
+        <td><%= item.duedate %></td>
+        <td><%= item.title %></td>
+        <td><%= item.space %></td>
+        <td><%= item.fund %></td>
+        <td><%= item.investment %></td>
+        <td><%= item.price %></td>
+        <td><%= item.etc %></td>
+        <td><a href="<%= item.link %>" target="_blank"><%= item.link %></a></td>
+        <td><%= item.week %></td>
+        <!-- <td>
+          <a href="/edit/<%= item.id %>">수정</a>
+        </td> -->
+      </tr>
+      <% })%>
+    </tbody>
+  </table>
+</body>
+
+<script>
+  $(document).ready(function() {
+    $('#sensible_tb').DataTable();
+  });
+</script>
+
 </html>

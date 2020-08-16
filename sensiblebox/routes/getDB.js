@@ -12,23 +12,23 @@ const dbConfig = {
 var connection = mysql.createConnection(dbConfig);
 const getAllStartupproject = require('./query').getAllStartupproject;
 
-router.get('/', async(req, res)=> {
+router.get('/', async (req, res) => {
   console.log("hello");
-  try{
+  try {
     var data = await getAllStartupproject();
-    console.log(data)
-
-  }
-  catch(err){
+    // console.log(data[1]);
+  } catch (err) {
     console.log(err)
-  }
-  finally{
-    res.render('allData', { title: 'Sensiblebox _ SmithGround'});
+  } finally {
+    res.render('allData', {
+      title: 'Sensiblebox _ SmithGround',
+      DB_data: data
+    });
     console.log("allData success")
   }
 
 });
-  //connection.end();
+//connection.end();
 
 
 
